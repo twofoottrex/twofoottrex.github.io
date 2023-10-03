@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <title>Two Foot T-Rex | Store</title>
+        <meta name="description" content="This is the description">
+        <script src="store.js" async></script>
+       
+    </head>
+    <body>
+
+        <header class="main-header">
+            <nav class="nav main-nav">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="Store.html">STORE</a></li>
+                    <li><a href="About.html">ABOUT</a></li>
+                </ul>
+            </nav>
+            
+            <h1 class="band-name band-name-large">Two Foot T-Rex</h1>
+        </header>
+
+       <section class="content-section container">
+        <h2 class="section-header">RECORDS</h2>
+        <div class="shop-items">
+
+
+            <div class="shop-item">
+                <span class="shop-item-title">Butterflies</span>
+                <div class="shop-item-image-container">
+                  <img id="butterflies-image" class="shop-item-image" src="Images/Butterflies.PNG">
+                  <div class="speaker-icon"></div> <!-- Empty div for speaker icon -->
+              </div>
+                <script>
+                    // Get a reference to the "Butterflies" image element
+                  const butterfliesImage = document.getElementById('butterflies-image');
+
+                  // Create an audio element and set its source to the music file (music.mp3)
+                  const butterfliesaudio = new Audio('Music/Butterflies.mp3');
+
+                  // Set the initial volume to 1 (maximum)
+                  butterfliesaudio.volume = 1;
+
+                  let fadeTimeout; // Declare a variable to store the timeout ID
+                  let audioPlaying = false; // Flag to track whether audio is playing
+
+                  // Add a hover event listener to the image
+                  butterfliesImage.addEventListener('click', () => {
+                    // Check if audio is not currently playing
+                    if (!audioPlaying) {
+                      // Play the audio when hovering over the image
+                      butterfliesaudio.currentTime = 0; // Reset the audio to the beginning
+                      butterfliesaudio.play();
+                      butterfliesaudio.volume = 1;
+                      audioPlaying = true; // Set the flag to indicate audio is playing
+
+                      // Schedule a function to fade out the audio after 10 seconds
+                      fadeTimeout = setTimeout(() => {
+                        fadeOutButterfliesAudio();
+                      }, 15000); // 10000 milliseconds = 10 seconds
+                    }
+                  });
+
+                  // Add a mouseleave event listener to stop the audio and clear the timeout
+                  butterfliesImage.addEventListener('mouseleave', () => {
+                    // Check if audio is currently playing
+                    if (audioPlaying) {
+                      // Pause and reset the audio when the mouse leaves the image
+                      butterfliesaudio.pause();
+                      butterfliesaudio.currentTime = 0; // Reset the audio to the beginning
+
+                      // Clear the fadeout timeout when the mouse leaves
+                      clearTimeout(fadeTimeout);
+                      audioPlaying = false; // Set the flag to indicate audio is not playing
+                    }
+                  });
+
+                  // Function to gradually reduce the volume and stop the audio
+                  function fadeOutButterfliesAudio() {
+                    const fadeInterval = 100; // Interval for volume reduction (milliseconds)
+                    const fadeDuration = 2000; // Duration of fadeout (milliseconds)
+
+                    const initialVolume = butterfliesaudio.volume;
+                    const volumeStep = initialVolume / (fadeDuration / fadeInterval);
+
+                    // Reduce the volume gradually
+                    const fadeOutInterval = setInterval(() => {
+                      if (butterfliesaudio.volume > 0) {
+                        butterfliesaudio.volume -= volumeStep;
+
+                        // Check if the volume is very close to 0 and set it to 0 explicitly
+                        if (butterfliesaudio.volume < 0.05) {
+                          butterfliesaudio.volume = 0;
+                          clearInterval(fadeOutInterval); // Stop the interval
+                          butterfliesaudio.pause(); // Pause the audio
+                          audioPlaying = false; // Set the flag to indicate audio is not playing
+                        }
+                      } else {
+                        // Stop the audio and clear the interval when volume reaches 0
+                        clearInterval(fadeOutInterval);
+                        butterfliesaudio.pause();
+                        audioPlaying = false; // Set the flag to indicate audio is not playing
+                      }
+                    }, fadeInterval);
+                  }
+                  </script>
+
+                <div class="shop-item-details">
+                    <span class="shop-item-price">£6.99</span>
+                    <button class="button button-primary shop-item-button" role="button">ADD TO CART</button>
+                </div>
+            </div>
+            
+            <div class="shop-item">
+              <span class="shop-item-title">Adrenaline</span>
+              <div class="shop-item-image-container">
+                  <img id="adrenaline-image" class="shop-item-image" src="Images/Adrenaline2.png">
+                  <div class="speaker-icon"></div>
+              </div>
+
+                <script>
+                   // Get a reference to the "Adrenaline" image element
+                    const adrenalineImage = document.getElementById('adrenaline-image');
+
+                    // Create an audio element and set its source to the music file for adrenaline
+                    const adrenalineaudio = new Audio('Music/Adrenaline.mp3');
+
+                    // Set the initial volume to 1 (maximum)
+                    adrenalineaudio.volume = 1;
+
+                    let fadeTimeoutAdrenaline; // Declare a variable to store the timeout ID for adrenaline
+                    let audioPlayingAdrenaline = false; // Flag to track whether audio is playing for adrenaline
+
+                    // Add a hover event listener to the "adrenaline-image"
+                    adrenalineImage.addEventListener('click', () => {
+                      // Check if audio for adrenaline is not currently playing
+                      if (!audioPlayingAdrenaline) {
+                        // Play the audio when hovering over the image
+                        adrenalineaudio.currentTime = 0; // Reset the audio to the beginning
+                        adrenalineaudio.play();
+                        adrenalineaudio.volume = 1;
+                        audioPlayingAdrenaline = true; // Set the flag to indicate audio is playing
+
+                        // Schedule a function to fade out the audio after 10 seconds
+                        fadeTimeoutAdrenaline = setTimeout(() => {
+                          fadeOutAdrenalineAudio();
+                        }, 15000); // 10000 milliseconds = 10 seconds
+                      }
+                    });
+
+                    // Add a mouseleave event listener to stop the audio and clear the timeout for "adrenaline-image"
+                    adrenalineImage.addEventListener('mouseleave', () => {
+                      // Check if audio for adrenaline is currently playing
+                      if (audioPlayingAdrenaline) {
+                        // Pause and reset the audio when the mouse leaves the image
+                        adrenalineaudio.pause();
+                        adrenalineaudio.currentTime = 0; // Reset the audio to the beginning
+
+                        // Clear the fadeout timeout when the mouse leaves "adrenaline-image"
+                        clearTimeout(fadeTimeoutAdrenaline);
+                        audioPlayingAdrenaline = false; // Set the flag to indicate audio is not playing
+                      }
+                    });
+
+                    // Function to gradually reduce the volume and stop the audio for adrenaline
+                    function fadeOutAdrenalineAudio() {
+                      const fadeInterval = 100; // Interval for volume reduction (milliseconds)
+                      const fadeDuration = 2000; // Duration of fadeout (milliseconds)
+
+                      const initialVolume = adrenalineaudio.volume;
+                      const volumeStep = initialVolume / (fadeDuration / fadeInterval);
+
+                      // Reduce the volume gradually
+                      const fadeOutInterval = setInterval(() => {
+                        if (adrenalineaudio.volume > 0) {
+                          adrenalineaudio.volume -= volumeStep;
+
+                          // Check if the volume is very close to 0 and set it to 0 explicitly
+                          if (adrenalineaudio.volume < 0.05) {
+                            adrenalineaudio.volume = 0;
+                            clearInterval(fadeOutInterval); // Stop the interval
+                            adrenalineaudio.pause(); // Pause the audio
+                            audioPlayingAdrenaline = false; // Set the flag to indicate audio is not playing
+                          }
+                        } else {
+                          // Stop the audio and clear the interval when volume reaches 0
+                          clearInterval(fadeOutInterval);
+                          adrenalineaudio.pause();
+                          audioPlayingAdrenaline = false; // Set the flag to indicate audio is not playing
+                        }
+                      }, fadeInterval);
+                    }
+                  </script>
+
+                
+
+                <div class="shop-item-details">
+                    <span class="shop-item-price">£4.99</span>
+                    <button class="button button-primary shop-item-button" role="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item">
+              <span class="shop-item-title">War Talk</span>
+              <div class="shop-item-image-container">
+                  <img id="wartalk-image" class="shop-item-image" src="Images/War Talk.png">
+                  <div class="speaker-icon"></div>
+              </div>
+                <script>
+                    // Get a reference to the "War Talk" image element
+                    const warTalkImage = document.getElementById('wartalk-image');
+
+                    // Create an audio element and set its source to the music file for War Talk
+                    const warTalkaudio = new Audio('Music/WarTalk.mp3');
+
+                    // Set the initial volume to 1 (maximum)
+                    warTalkaudio.volume = 1;
+
+                    let fadeTimeoutWartalk; // Declare a variable to store the timeout ID for War Talk
+                    let audioPlayingWartalk = false; // Flag to track whether audio is playing for War Talk
+
+                    // Add a hover event listener to the "wartalk-image"
+                    warTalkImage.addEventListener('click', () => {
+                      // Check if audio for War Talk is not currently playing
+                      if (!audioPlayingWartalk) {
+                        // Play the audio when hovering over the image
+                        warTalkaudio.currentTime = 0; // Reset the audio to the beginning
+                        warTalkaudio.play();
+                        warTalkaudio.volume = 1;
+                        audioPlayingWartalk = true; // Set the flag to indicate audio is playing
+
+                        // Schedule a function to fade out the audio after 10 seconds
+                        fadeTimeoutWartalk = setTimeout(() => {
+                          fadeOutWartalkAudio();
+                        }, 15000); // 10000 milliseconds = 10 seconds
+                      }
+                    });
+
+                    // Add a mouseleave event listener to stop the audio and clear the timeout for "wartalk-image"
+                    warTalkImage.addEventListener('mouseleave', () => {
+                      // Check if audio for War Talk is currently playing
+                      if (audioPlayingWartalk) {
+                        // Pause and reset the audio when the mouse leaves the image
+                        warTalkaudio.pause();
+                        warTalkaudio.currentTime = 0; // Reset the audio to the beginning
+
+                        // Clear the fadeout timeout when the mouse leaves "wartalk-image"
+                        clearTimeout(fadeTimeoutWartalk);
+                        audioPlayingWartalk = false; // Set the flag to indicate audio is not playing
+                      }
+                    });
+
+                    // Function to gradually reduce the volume and stop the audio for War Talk
+                    function fadeOutWartalkAudio() {
+                      const fadeInterval = 100; // Interval for volume reduction (milliseconds)
+                      const fadeDuration = 2000; // Duration of fadeout (milliseconds)
+
+                      const initialVolume = warTalkaudio.volume;
+                      const volumeStep = initialVolume / (fadeDuration / fadeInterval);
+
+                      // Reduce the volume gradually
+                      const fadeOutInterval = setInterval(() => {
+                        if (warTalkaudio.volume > 0) {
+                          warTalkaudio.volume -= volumeStep;
+
+                          // Check if the volume is very close to 0 and set it to 0 explicitly
+                          if (warTalkaudio.volume < 0.05) {
+                            warTalkaudio.volume = 0;
+                            clearInterval(fadeOutInterval); // Stop the interval
+                            warTalkaudio.pause(); // Pause the audio
+                            audioPlayingWartalk = false; // Set the flag to indicate audio is not playing
+                          }
+                        } else {
+                          // Stop the audio and clear the interval when volume reaches 0
+                          clearInterval(fadeOutInterval);
+                          warTalkaudio.pause();
+                          audioPlayingWartalk = false; // Set the flag to indicate audio is not playing
+                        }
+                      }, fadeInterval);
+                    }
+                  </script>
+
+                <div class="shop-item-details">
+                    <span class="shop-item-price">£4.99</span>
+                    <button class="button button-primary shop-item-button" role="button">ADD TO CART</button>
+
+                    
+
+                </div>
+            </div>
+            <div class="shop-item">
+              <span class="shop-item-title">Distance</span>
+              <div class="shop-item-image-container">
+                  <img id="distance-image" class="shop-item-image" src="Images/Distance.png">
+                  <div class="speaker-icon"></div>
+              </div>
+                <script>
+                    // Get a reference to the "Distance" image element
+                    const distanceImage = document.getElementById('distance-image');
+
+                    // Create an audio element and set its source to the music file for Distance
+                    const distanceaudio = new Audio('Music/Distance.mp3');
+
+                    // Set the initial volume to 1 (maximum)
+                    distanceaudio.volume = 1;
+
+                    let fadeTimeoutDistance; // Declare a variable to store the timeout ID for Distance
+                    let audioPlayingDistance = false; // Flag to track whether audio is playing for Distance
+
+                    // Add a hover event listener to the "distance-image"
+                    distanceImage.addEventListener('click', () => {
+                      // Check if audio for Distance is not currently playing
+                      if (!audioPlayingDistance) {
+                        // Play the audio when hovering over the image
+                        distanceaudio.currentTime = 0; // Reset the audio to the beginning
+                        distanceaudio.play();
+                        distanceaudio.volume = 1;
+                        audioPlayingDistance = true; // Set the flag to indicate audio is playing
+
+                        // Schedule a function to fade out the audio after 10 seconds
+                        fadeTimeoutDistance = setTimeout(() => {
+                          fadeOutDistanceAudio();
+                        }, 15000); // 10000 milliseconds = 10 seconds
+                      }
+                    });
+
+                    // Add a mouseleave event listener to stop the audio and clear the timeout for "distance-image"
+                    distanceImage.addEventListener('mouseleave', () => {
+                      // Check if audio for Distance is currently playing
+                      if (audioPlayingDistance) {
+                        // Pause and reset the audio when the mouse leaves the image
+                        distanceaudio.pause();
+                        distanceaudio.currentTime = 0; // Reset the audio to the beginning
+
+                        // Clear the fadeout timeout when the mouse leaves "distance-image"
+                        clearTimeout(fadeTimeoutDistance);
+                        audioPlayingDistance = false; // Set the flag to indicate audio is not playing
+                      }
+                    });
+
+                    // Function to gradually reduce the volume and stop the audio for Distance
+                    function fadeOutDistanceAudio() {
+                      const fadeInterval = 100; // Interval for volume reduction (milliseconds)
+                      const fadeDuration = 2000; // Duration of fadeout (milliseconds)
+
+                      const initialVolume = distanceaudio.volume;
+                      const volumeStep = initialVolume / (fadeDuration / fadeInterval);
+
+                      // Reduce the volume gradually
+                      const fadeOutInterval = setInterval(() => {
+                        if (distanceaudio.volume > 0) {
+                          distanceaudio.volume -= volumeStep;
+
+                          // Check if the volume is very close to 0 and set it to 0 explicitly
+                          if (distanceaudio.volume < 0.05) {
+                            distanceaudio.volume = 0;
+                            clearInterval(fadeOutInterval); // Stop the interval
+                            distanceaudio.pause(); // Pause the audio
+                            audioPlayingDistance = false; // Set the flag to indicate audio is not playing
+                          }
+                        } else {
+                          // Stop the audio and clear the interval when volume reaches 0
+                          clearInterval(fadeOutInterval);
+                          distanceaudio.pause();
+                          audioPlayingDistance = false; // Set the flag to indicate audio is not playing
+                        }
+                      }, fadeInterval);
+                    }
+                  </script>
+                
+                <div class="shop-item-details">
+                    <span class="shop-item-price">£4.99</span>
+                    <button class="button button-primary shop-item-button" role="button">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+       </section>
+
+       <section class="content-section container">
+        <h2 class="section-header">MERCH</h2>
+        <div class="shop-items">
+            <div class="shop-item">    
+                <span class="shop-item-title">T-Shirt</span>
+                <img class="shop-item-image" src="Images/T-Shirt.png" >
+                <div class="shop-item-details">
+                    <span class="shop-item-price">£19.99</span>
+                    <button role="button" class="button button-primary shop-item-button">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+       </section>
+
+       <section class="container content-section">
+        <h2 class="section-header">CART</h2>.
+        
+        
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">ITEM</span>
+                <span class="cart-price cart-header cart-column">PRICE</span>
+                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+            </div>
+
+        <div class="cart-items">
+        </div>
+
+        <div class="cart-total">
+            <span class="cart-total-title">TOTAL</span>
+            <span class="cart-total-price">£0.00</span>
+        </div>
+        
+        <button class="button button-primary button-purchase" role="button">PURCHASE</button>
+        
+       </section>
+
+        </section>
+        <footer class="main-footer">
+            
+            <div class="container main-footer-container">
+                <h3 class="band-name">Two Foot T-Rex</h3>
+                <ul class="nav footer-nav">
+                    <li>
+                        <a href="https://www.facebook.com/TwoFootTRex/" target="_blank"><img src="Images/Facebookwhite.png" width="80"></a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/@epichedgevlogs" target="_blank"><img src="Images/youtubewhite.png" width="60"></a>
+                    </li>
+                    <li>
+                        <a href="https://open.spotify.com/artist/1iMZRNE8DtcPNAeecMyyzJ" target="_blank"><img src="Images/Spotifywhite.png" width="80"></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

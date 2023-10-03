@@ -1,7 +1,7 @@
 var music = new Audio('Music/music.mp3');
 var isPlaying = false;
 var playButton = document.getElementsByClassName('button-play')[0];
-var startTime = 505.8; // Start the song 58 seconds in
+var startTime = 0; // Start the song 58 seconds in
 var fadeOutDuration = 3; // Fade out duration in seconds
 
 if (document.readyState == 'loading') {

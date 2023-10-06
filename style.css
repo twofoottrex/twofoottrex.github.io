@@ -394,14 +394,32 @@ html, body {
     /* Set initial border properties */
     border: 5px solid transparent;
     transition: border-color 0.3s; /* Add a smooth transition effect */
+    
 
     /* Additional styling if needed */
     width: 300px; /* Adjust the width as per your image size */
     height: auto; /* Maintain aspect ratio */
-}
+    
+    }
+    
+  
+
 
 #butterflies-image:hover {
     border-color: orangered; /* Change the border color on hover */
+    animation: rotation 6s infinite linear;
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .9);
+}
+     
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+
 }
 
 #adrenaline-image {
@@ -415,8 +433,25 @@ html, body {
 }
 
 #adrenaline-image:hover {
+    
     border-color: orangered; /* Change the border color on hover */
+    animation: rotation 6s infinite linear;
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .9);
 }
+     
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+
+
+}
+
+
 
 #wartalk-image {
     /* Set initial border properties */
@@ -430,6 +465,19 @@ html, body {
 
 #wartalk-image:hover {
     border-color: orangered; /* Change the border color on hover */
+    animation: rotation 6s infinite linear;
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .9);
+}
+     
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+
 }
 
 #distance-image {
@@ -444,7 +492,37 @@ html, body {
 
 #distance-image:hover {
     border-color: orangered; /* Change the border color on hover */
+    animation: rotation 6s infinite linear;
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .9);
+}
+     
+ @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+
 }
 
-
+.circle{
+    border: 5px;
+    border-color: black;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(255, 252, 252, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.1;
+    transition: 0s;
+    pointer-events: none; /* Allow mouse events to pass through the speaker icon */
+}
   
+.shop-item-image-container:hover .circle{
+    opacity: 1;
+}

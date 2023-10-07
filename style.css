@@ -399,7 +399,7 @@ html, body {
     /* Additional styling if needed */
     width: 300px; /* Adjust the width as per your image size */
     height: auto; /* Maintain aspect ratio */
-    
+    box-shadow: 0 0 50px rgba(0, 0, 0, .3);
     }
     
   
@@ -430,6 +430,7 @@ html, body {
     /* Additional styling if needed */
     width: 300px; /* Adjust the width as per your image size */
     height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 0 50px rgba(0, 0, 0, .3);
 }
 
 #adrenaline-image:hover {
@@ -461,6 +462,7 @@ html, body {
     /* Additional styling if needed */
     width: 300px; /* Adjust the width as per your image size */
     height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 0 50px rgba(0, 0, 0, .3);
 }
 
 #wartalk-image:hover {
@@ -488,6 +490,7 @@ html, body {
     /* Additional styling if needed */
     width: 300px; /* Adjust the width as per your image size */
     height: auto; /* Maintain aspect ratio */
+    box-shadow: 0 0 50px rgba(0, 0, 0, .3);
 }
 
 #distance-image:hover {
